@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="alert alert-danger mt-2 text-center font-weight-bold" role="alert">
+    Welcome to the Covid-19 Dashboard!!
+  </div>
+  <div class="badge badge-info-mt-2" style="text-align: center;">This is a COVID-19 dashboard with better data visualization. 
+    Here, you can have a complete picture of different types of cases all over the world.
+  </div>
+  <div class="instructional-text">Please select below to see the respective dashboard.</div>
+  <nav>
+    <button mat-button class="mat-button">
+      <a routerLink="/world" routerLinkActive="active">World's Dashboard</a>
+    </button>
+    <button mat-raised-button class="mat-button">
+      <a routerLink="/india" routerLinkActive="active">India's Dashboard</a>
+    </button>
+    <button mat-raised-button class="mat-button">
+      <a routerLink="/state" routerLinkActive="active">Indian-State's Dashboard</a>
+    </button>
+  </nav>
+  <!-- The routed views render in the <router-outlet>-->
+  <router-outlet></router-outlet>
+  <div class="footer">
+    <div class="alert alert-danger mt-4 text-center font-weight-bold" role="alert">
+      !! Stay Home Stay Safe !!
+    </div>
+  </div>
+</div>
