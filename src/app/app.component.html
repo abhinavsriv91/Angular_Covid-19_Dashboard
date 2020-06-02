@@ -1,27 +1,67 @@
 <div class="container">
-  <div class="alert alert-danger mt-2 text-center font-weight-bold" role="alert">
-    Welcome to the Covid-19 Dashboard!!
+  <div class="row">
+    <div class="col-sm-12 alert alert-danger text-center font-weight-bold">
+      Welcome to the Covid-19 Dashboard!!
+    </div>
   </div>
-  <div class="badge badge-info-mt-2" style="text-align: center;">This is a COVID-19 dashboard with better data visualization. 
-    Here, you can have a complete picture of different types of cases all over the world.
+  <div class="row">
+    <div class="text-dark ml-2">This is a COVID-19 dashboard with better data
+      visualization.
+      Here, you can have a complete picture of different types of cases all over the world.
+    </div>
   </div>
-  <div class="instructional-text">Please select below to see the respective dashboard.</div>
+  <div class="row">
+    <div class="col- text-dark mt-2 ml-2">Please select a tab to view the respective dashboard.</div>
+  </div>
   <nav>
-    <button mat-button class="mat-button">
-      <a routerLink="/world" routerLinkActive="active">World's Dashboard</a>
-    </button>
     <button mat-raised-button class="mat-button">
       <a routerLink="/india" routerLinkActive="active">India's Dashboard</a>
     </button>
     <button mat-raised-button class="mat-button">
       <a routerLink="/state" routerLinkActive="active">Indian-State's Dashboard</a>
     </button>
+    <button mat-button class="mat-button">
+      <a routerLink="/world" routerLinkActive="active">World's Dashboard</a>
+    </button>
   </nav>
-  <!-- The routed views render in the <router-outlet>-->
   <router-outlet></router-outlet>
   <div class="footer">
-    <div class="alert alert-danger mt-4 text-center font-weight-bold" role="alert">
-      !! Stay Home Stay Safe !!
+    <div class="alert alert-danger mt-4 text-center font-weight-bold">
+      !! Stay Home, Stay Safe !!
     </div>
   </div>
 </div>
+
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.14.6/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.14.6/firebase-analytics.js"></script>
+
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="/__/firebase/7.14.6/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="/__/firebase/7.14.6/firebase-analytics.js"></script>
+
+<!-- Initialize Firebase -->
+<script src="/__/firebase/init.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyDSe6sZLXdMdU5SYjnhv8sSGA5MmJqG7UU",
+    authDomain: "covid-dashboard-e2f84.firebaseapp.com",
+    databaseURL: "https://covid-dashboard-e2f84.firebaseio.com",
+    projectId: "covid-dashboard-e2f84",
+    storageBucket: "covid-dashboard-e2f84.appspot.com",
+    messagingSenderId: "494605219115",
+    appId: "1:494605219115:web:8ef3509b9a393e3085816e",
+    measurementId: "G-HBM58DCKXW"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>

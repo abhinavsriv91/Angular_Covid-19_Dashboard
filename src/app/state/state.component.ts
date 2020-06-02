@@ -68,7 +68,7 @@ export class StateComponent implements OnInit {
     this.dataService.getCovidData().subscribe(data => {
       this.covidObj = data.covids;
       this.covidObj.sort((a, b) => b.confirmedCase - a.confirmedCase);
-      this.barChartDataConf = this.covidObj.filter((item) => item.confirmedCase > 4000);
+      this.barChartDataConf = this.covidObj.filter(t=>t.stateCode!='OTH').slice(0,10);
       this.barChartConfirm = this.barChartDataConf.map((item) => item.confirmedCase);
       this.barChartLabels = this.barChartDataConf.map((item) => item.stateCode);
       this.StateWithMaxConfirmedCases = (this.barChartDataConf.map((item) => item.state))[0];
@@ -80,7 +80,7 @@ export class StateComponent implements OnInit {
             label: 'Total Confirmed Cases',
             data: this.barChartConfirm,
             borderColor: '#3cba9f',
-            backgroundColor: ['#239B56', '#1F618D', '#148F77', '#1E8449', '#B7950B', '#DC7633', '#A04000']
+            backgroundColor: ['#239B56', '#1F618D', '#148F77', '#1E8449', '#B7950B', '#DC7633', '#A04000','#E91E63','#FF9800','#7CB342']
           }]
         },
         options: {
@@ -217,11 +217,21 @@ export class StateComponent implements OnInit {
   }
 
   getDistrict(st: string) {
-    this.pieChartDataComfirmedDistricts = (this.stateAndDistrcitWiseData.find(element =>  element.id == st ).districtData)
-                                            .filter(element => element.confirmed > 100);
+    let distictData = this.stateAndDistrcitWiseData.find(element =>  element.id == st ).districtData;
+    if(distictData.filter(element => element.confirmed > 100).length >= 2){
+      this.pieChartDataComfirmedDistricts = distictData.filter(element => element.confirmed > 100);
+    }
+    else{
+      this.pieChartDataComfirmedDistricts = distictData;
+    }
+    
     this.pieChartComfirmedDistricts = this.pieChartDataComfirmedDistricts.map((item) => item.confirmed);
     this.pieChartLegendsDistricts = this.pieChartDataComfirmedDistricts.map((item) => item.id)
     
+    if(this.pieChartIndia){
+      this.pieChartIndia.destroy();
+    }
+
     this.pieChartIndia = new Chart('canvasIndiaDistrict', {
         type: 'pie',
         data: {
