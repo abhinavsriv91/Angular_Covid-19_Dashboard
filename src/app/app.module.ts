@@ -10,7 +10,7 @@ import { AppRoutingModule}     from './app-routing.module';
 import { WorldComponent } from './world/world.component';
 import { IndiaComponent } from './india/india.component';
 import { StateComponent } from './state/state.component';
-import {MatListModule} from '@angular/material/list'
+import {MatListModule} from '@angular/material/list';
 
 @NgModule({
   imports: [
